@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^(.*)$ application/controller.php?request=$1
+
