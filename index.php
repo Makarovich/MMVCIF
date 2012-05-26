@@ -1,7 +1,5 @@
 <?php
-
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Don't put ANYTHING in this file. It's only here to block out directory listings without .htaccess!
  */
 ?>

@@ -15,7 +15,7 @@ class ErrorController implements Controller
             'current_date' => date('h:m'),
             'website_name' => WEBSITE_URL,
             'webmaster' => WEBMASTER_EMAIL,
-            'url' => $_SERVER['REQUEST_URI']));
+            'url' => CURRENT_PAGE));
 
         echo $_view->output();
     }

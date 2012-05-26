@@ -7,24 +7,16 @@
 
 include ('global.php');
 
-$_page = null;
 $_url = (WEBSITE_DIRECTORY == 'root') ? '/' : '/' . WEBSITE_DIRECTORY . '/';
+$_page = str_replace($_url, null, $_SERVER['REQUEST_URI']);
 
-if (!isset($_GET['request'])) // Someone tried to access this file directory for some reason..
+if ($_page == '') // No request so therefore they're trying to go to the index
 {
-    $_page = 'error';
-}
-else
-{
-    $_page = str_replace($_url, null, $_SERVER['REQUEST_URI']);
+    $_page = 'index';
 }
 
-if ($_page == ' ')
-{
-    $_page == 'index'; //They're coming from a non-direct POV.
-}
+define('CURRENT_PAGE', $_page);
 
-$_router = new Router();
-$_router->direct($_page);
+$_site->_router->direct($_page);
 ?>
 

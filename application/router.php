@@ -13,12 +13,12 @@ class Router
 
         if (!file_exists('controllers/' . $_class . '.php')) // If we can't find WhateverController.php
         {
-            //not yet.
+            $this->direct('error');
             return;
         }
 
         include ('controllers/' . $_class . '.php');
-        
+
         $_control = new $_class();
 
         $_control->action(); //Start the controller -> view -> ? (coming soon)

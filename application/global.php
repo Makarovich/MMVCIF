@@ -4,26 +4,37 @@
  * GLOBAL.PHP; 5-24-2012
  * Holds all the classes needed for including!
  */
-
-/*
- * SIMPLE CONFIGURATION
- */
-define('WEBSITE_URL', 'localhost');
-define('WEBSITE_DIRECTORY', 'mvc');
-define('FULL_PATH', (WEBSITE_DIRECTORY == 'root') ? WEBSITE_URL : WEBSITE_URL . '/' . WEBSITE_DIRECTORY);
-define('WEBMASTER_EMAIL', 'makarov@ragezone.com');
-/*
- * END SIMPLE CONFIGURATION
- */
-define('IN_MVC', true);
+//Our configuration
+include('configuration.php');
 
 //Our router
 include('router.php');
 
 //Grab some interfaces
 include('interfaces/Interface.Controller.php');
+include('interfaces/Interface.Model.php');
+include('interfaces/Interface.DataObject.php');
 
 //Grab some handlers
 include('handlers/ViewHandler.php'); //Our templating!!
 
+//Grab all of our models
+include('models/Model.MySQL.php');
+include('models/Model.MySQLi.php');
+include('models/Model.PDO.php');
+
+//Set our timezone
+date_default_timezone_set('America/New_York');
+
+//Our Site Handler
+include('site.php');
+$_site = new Site($_config, new Router());
+
+//Definitions
+define('WEBSITE_URL', $_site->_config['site']['url']);
+define('WEBSITE_DIRECTORY', $_site->_config['site']['directory']);
+define('FULL_PATH', (WEBSITE_DIRECTORY == 'root') ? WEBSITE_URL : WEBSITE_URL . '/' . WEBSITE_DIRECTORY);
+define('WEBMASTER_EMAIL', $_site->_config['site']['webmaster']);
+
+//Site loading is done :D
 ?>
