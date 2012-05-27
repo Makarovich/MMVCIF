@@ -14,6 +14,11 @@ class Site
         $this->_config = $_config;
         $this->_router = $_router;
 
+        if (!file_exists('../Public/Themes/' . $this->_config['site']['theme'] . '/'))
+        {
+            $this->_config['site']['theme'] = 'Default'; //If they delete this style then.. they're just about stupid
+        }
+        
         $this->create_model();
     }
 

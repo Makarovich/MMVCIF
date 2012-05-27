@@ -9,19 +9,11 @@ class IndexController implements Controller
 {
     public function action()
     {
-        global $_site;
-
         if ($this->notfound())
         {
-            $_test = $_site->_model->prepare('SELECT * FROM ats_sites WHERE username = ?')
-                    ->bind(array('EmberHotel'))->execute();
-
             $_view = new ViewHandler('index');
 
-            while($_array = $_test->fetch_array())
-            {
-                $_view->set(array('url' => $_array['url']));
-            }
+            $_view->css('sheet-index');
 
             echo $_view->output();
         }
@@ -31,7 +23,7 @@ class IndexController implements Controller
     {
         global $_site;
 
-        if (!file_exists('../application/views/index.html'))
+        if (!file_exists('../Application/Views/index.html'))
         {
             $_site->_router->direct('error');
             return false;
