@@ -1,6 +1,0 @@
-RewriteEngine on
-
-RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt)$
-
-RewriteRule ^(.*)$ Application/Controller.php?request=$1
-
