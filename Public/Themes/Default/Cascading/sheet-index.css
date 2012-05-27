@@ -1,0 +1,23 @@
+body
+{
+    font-family: "Segoe UI";
+}
+
+.page-container
+{
+    margin-top: 300px;
+    display: block;
+    text-align: center;
+}
+
+.page-container > .big
+{
+    font-size: 72px;
+}
+
+.page-container > .small
+{
+    margin-top: 200px;
+    font-size: xx-small;
+    display: block;
+}
